@@ -1,0 +1,24 @@
+{% extends 'base.html' %} {% block content %}
+<div class="d-flex align-items-center justify-content-center min-vh-100">
+  <div class="card" style="width: 18rem;">
+    <img
+      src="{{user.image.url}}"
+      class="card-img-top"
+      alt="Profile Pic"
+    />
+    <div class="card-body">
+      <p class="card-text">
+        Name : {{user.name}}
+        <br />
+        Email : {{user.email}}
+        <br />
+        Joined Date: {{user.created_at}}
+      </p>
+      <form method="POST" action="{% url 'signout' %}">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-sm btn-primary">Logout</button>
+      </form>
+    </div>
+  </div>
+</div>
+{% endblock %}

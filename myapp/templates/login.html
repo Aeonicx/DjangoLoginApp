@@ -1,0 +1,69 @@
+{% extends 'base.html' %} {% load static %} {% block content %}
+<section class="vh-100">
+  <div class="container py-5 h-100">
+    <div class="row d-flex align-items-center justify-content-center h-100">
+      <div class="col-md-8 col-lg-7 col-xl-6">
+        <img
+          src="{% static 'images/draw2.svg' %}"
+          class="img-fluid"
+          alt="Phone image"
+        />
+      </div>
+      <div class="col-md-7 col-lg-5 col-xl-5 offset-xl-1">
+        <form method="POST" action="{% url 'signin' %}">
+          {% csrf_token %}
+          <!-- Email input -->
+          <div class="form-outline mb-4">
+            <input
+              type="email"
+              id="form1Example13"
+              class="form-control form-control-lg"
+              name="email"
+              required
+              placeholder="Enter Email ID"
+            />
+            <label class="form-label white" for="form1Example13"
+              >Email address</label
+            >
+          </div>
+
+          <!-- Password input -->
+          <div class="form-outline mb-4">
+            <input
+              type="password"
+              id="form1Example23"
+              class="form-control form-control-lg"
+              name="password"
+              required
+              minlength="4"
+              placeholder="Enter Password"
+            />
+            <label class="form-label white" for="form1Example23"
+              >Password</label
+            >
+          </div>
+
+          {% include 'message.html' %}
+
+          <!-- Submit button -->
+          <button type="submit" class="btn btn-primary btn-lg btn-block">
+            Sign in
+          </button>
+
+          <div class="divider d-flex align-items-center my-4">
+            <p class="text-center fw-bold mx-3 mb-0 white">OR</p>
+          </div>
+
+          <a
+            class="btn btn-primary btn-lg btn-block"
+            style="background-color: #3b5998;"
+            href="{% url 'register' %}"
+            role="button"
+            >Create an account
+          </a>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}
